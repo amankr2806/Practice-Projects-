@@ -22,20 +22,22 @@ export default function Home() {
 
   return (
     <div>
-      {[...Array(noOfStars)].map((_, index) => (
-        //const currIndex = index + 1;
-        // return (
-        <FaStar
-          key={index}
-          size={40}
-          color={index + 1 <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-          onClick={() => handleClick(index + 1)}
-          onMouseMove={() => handleMouseMove(index + 1)}
-          onMouseLeave={handleMouseLeave}
-          style={{ cursor: "pointer" }}
-        />
-        // );
-      ))}
+      {[...Array(noOfStars)].map((_, index) => {
+        const currIndex = index + 1;
+        return (
+          <div>
+            <FaStar
+              key={currIndex}
+              size={40}
+              color={currIndex <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+              onClick={() => handleClick(currIndex)}
+              onMouseMove={() => handleMouseMove(currIndex)}
+              onMouseLeave={handleMouseLeave}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
